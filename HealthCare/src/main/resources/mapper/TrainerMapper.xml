@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.health.web.dao.trainer.TrainerDao">
+
+	<select id="getTrainer" resultType="com.example.health.web.dto.user.TrainerDto">
+		SELECT * FROM health_tuser WHERE UserID='${param1}'
+	</select>
+	
+	<select id="getTrainerList" resultType="List">
+		SELECT * FROM health_tuser
+	</select>
+	
+	<insert id="registerMember" parameterType="com.example.health.web.dto.user.MemberDto">
+		INSERT INTO health_tmember(
+		MemberName, MemberPhone, EnrollFr, 
+		EnrollTo, UserSeq, PsTrainSeq, 
+		PsTrainCheck, LastUserSeq, LastDate)
+		VALUES(#{memberName}, #{memberPhone}, #{enrollFr}, 
+		#{enrollTo}, #{userSeq}, #{psTrainSeq}, #{psTrainCheck},
+		 #{lastUserSeq}, #{lastDate})
+	</insert>
+
+</mapper>
+
